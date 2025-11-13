@@ -1,0 +1,179 @@
+# Sample YAML File
+# This file demonstrates various YAML features and syntax
+
+# Basic Key-Value Pairs
+title: "Sample YAML Configuration"
+version: 1.0
+description: A comprehensive example of YAML syntax and features
+
+# Strings (various formats)
+simple_string: Hello World
+quoted_string: "This is a quoted string"
+single_quoted: 'Single quotes work too'
+multiline_string: |
+  This is a multiline string.
+  It preserves line breaks.
+  Each line is on its own.
+folded_string: >
+  This is a folded string.
+  Line breaks are replaced with spaces.
+  It's useful for long text.
+
+# Numbers
+integer: 42
+float: 3.14159
+negative: -10
+scientific: 1.0e+12
+
+# Booleans
+is_active: true
+is_disabled: false
+yes_value: yes
+no_value: no
+
+# Null values
+empty_value: null
+tilde_null: ~
+
+# Lists (Arrays)
+simple_list:
+  - apple
+  - banana
+  - cherry
+  - date
+
+inline_list: [red, green, blue, yellow]
+
+# Nested lists
+nested_list:
+  - item1
+  - item2
+  - - nested_item1
+    - nested_item2
+  - item3
+
+# Objects (Dictionaries/Maps)
+person:
+  name: John Doe
+  age: 30
+  email: john.doe@example.com
+  active: true
+
+# Nested objects
+company:
+  name: Tech Corp
+  founded: 2020
+  address:
+    street: 123 Main St
+    city: San Francisco
+    state: CA
+    zip: 94105
+  employees:
+    - name: Alice
+      role: Developer
+      skills:
+        - Python
+        - JavaScript
+        - Docker
+    - name: Bob
+      role: Designer
+      skills:
+        - Figma
+        - Photoshop
+
+# List of objects
+users:
+  - id: 1
+    username: alice
+    role: admin
+  - id: 2
+    username: bob
+    role: user
+  - id: 3
+    username: charlie
+    role: moderator
+
+# Complex nested structure
+configuration:
+  database:
+    host: localhost
+    port: 5432
+    name: mydb
+    credentials:
+      username: admin
+      password: secret123
+    options:
+      ssl: true
+      timeout: 30
+      pool_size: 10
+  
+  cache:
+    enabled: true
+    provider: redis
+    settings:
+      host: localhost
+      port: 6379
+      ttl: 3600
+  
+  logging:
+    level: info
+    format: json
+    outputs:
+      - console
+      - file
+    file_path: /var/log/app.log
+
+# Anchors and Aliases (reusing values)
+defaults: &default_settings
+  timeout: 30
+  retries: 3
+  enabled: true
+
+service_a:
+  <<: *default_settings
+  name: Service A
+  port: 8080
+
+service_b:
+  <<: *default_settings
+  name: Service B
+  port: 8081
+  retries: 5  # Override default
+
+# Environment-specific configurations
+environments:
+  development:
+    debug: true
+    log_level: debug
+    api_url: http://localhost:3000
+  
+  staging:
+    debug: false
+    log_level: info
+    api_url: https://staging.example.com
+  
+  production:
+    debug: false
+    log_level: error
+    api_url: https://api.example.com
+
+# Special characters and escaping
+special_values:
+  colon_in_value: "This has a colon: see?"
+  quote_in_value: 'It''s a nice day'
+  hash_tag: "#hashtag"
+  at_symbol: "@username"
+
+# Dates and timestamps
+dates:
+  iso_date: 2024-01-15
+  timestamp: 2024-01-15T10:30:00Z
+  custom_date: "January 15, 2024"
+
+# Comments are supported
+# You can add comments anywhere in YAML
+metadata:
+  author: Sample Author  # inline comment
+  created: 2024-01-15
+  # This is a comment line
+  updated: 2024-01-20
